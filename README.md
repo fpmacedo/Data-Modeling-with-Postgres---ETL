@@ -86,6 +86,6 @@ The steps to run the pipeline are as follows:
 #### Sample Queries
 
 Get the number of paid and free plans by gender: <br>
-`%sql SELECT count(users.user_id), users.level, users.gender FROM users GROUP BY users.level, users.gender`
+`%sql SELECT count(user_table.user_id), user_table.level, user_table.gender FROM user_table GROUP BY user_table.level, user_table.gender`
 
 ![](pics/query_1.png)
