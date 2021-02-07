@@ -23,7 +23,7 @@ songplay_table_create = ("""CREATE TABLE IF NOT EXISTS songplay_table
 
 user_table_create = ("""CREATE TABLE IF NOT EXISTS user_table
                         (
-                        user_id int PRIMARY KEY NOT NULL,
+                        user_id int PRIMARY KEY,
                         first_name varchar,
                         last_name varchar,
                         gender varchar,
@@ -33,7 +33,7 @@ user_table_create = ("""CREATE TABLE IF NOT EXISTS user_table
 
 song_table_create = ("""CREATE TABLE IF NOT EXISTS song_table
                         (
-                        song_id varchar NOT NULL,
+                        song_id varchar PRIMARY KEY,
                         title varchar,
                         artist_id varchar,
                         year int,
@@ -43,7 +43,7 @@ song_table_create = ("""CREATE TABLE IF NOT EXISTS song_table
 
 artist_table_create = ("""CREATE TABLE IF NOT EXISTS artist_table
                           (
-                          artist_id varchar PRIMARY KEY NOT NULL,
+                          artist_id varchar PRIMARY KEY,
                           name varchar,
                           location varchar,
                           latitude numeric NULL,
@@ -53,7 +53,7 @@ artist_table_create = ("""CREATE TABLE IF NOT EXISTS artist_table
 
 time_table_create = ("""CREATE TABLE IF NOT EXISTS time_table
                         (
-                        start_time timestamp PRIMARY KEY NOT NULL,
+                        start_time timestamp PRIMARY KEY,
                         hour int,
                         day int,
                         week int,
@@ -76,8 +76,7 @@ songplay_table_insert = ("""INSERT INTO songplay_table
                             location,
                             user_agent
                             ) 
-                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                            ON CONFLICT (songplay_id) DO NOTHING;"""
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s);"""
                         )
 
 user_table_insert = ("""INSERT INTO user_table

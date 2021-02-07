@@ -27,18 +27,9 @@ def process_song_file(cur, filepath):
     df = pd.read_json(filepath, lines=True)
 
     # insert song record
-    #song_data = df[['song_id', 'title', 'artist_id', 'year', 'duration']].values[0].tolist()
-    song_data=df[['song_id', 'title', 'artist_id', 'year', 'duration']]
+    song_data = df[['song_id', 'title', 'artist_id', 'year', 'duration']].values[0].tolist()
     
-    
-    # Save the dataframe to disk
-    tmp_df = "./tmp_dataframe.csv"
-    song_data.to_csv(tmp_df,index=False , header=False)
-    f = open(tmp_df, 'r')
-    
-    #start = time.time()
-    cur.copy_from(f, 'song_table', sep=",")
-    #end = time.time()
+    cur.execute(song_table_insert, song_data)
  
     # insert artist record
     artist_data = df[['artist_id', 'artist_name', 'artist_location', 'artist_latitude', 'artist_longitude']].values[0].tolist()
