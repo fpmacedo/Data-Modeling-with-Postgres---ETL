@@ -54,7 +54,7 @@ In addition to the data files, the project includes six files:
 
 Using the song and log datasets, I created a denormalized star schema optimized for fast agregations and simplified queries on song play analysis. This includes one fact table of **songplays** and four dimension tables for **users, songs, artists, and time**:
 
-![](pics/Star_Schema.jpg)
+![](pics/Star_Schema.png)
 
 ## ETL Pipeline
 
